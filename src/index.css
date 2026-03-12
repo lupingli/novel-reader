@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 全局样式 - 极简主义阅读体验 */
+
+:root {
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: Georgia, Cambria, 'Times New Roman', Times, serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  background-color: #faf9f6;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* 阅读模式背景色 */
+.bg-white-mode {
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+.bg-cream-mode {
+  background-color: #f5f1e8;
+  color: #2d2d2d;
+}
+
+.bg-gray-mode {
+  background-color: #2d2d2d;
+  color: #e5e5e5;
+}
+
+.bg-black-mode {
+  background-color: #0a0a0a;
+  color: #d4d4d4;
+}
+
+/* 文字选择色 */
+::selection {
+  background-color: rgba(184, 150, 40, 0.3);
+  color: inherit;
+}
+
+/* 平滑过渡 */
+.transition-colors {
+  transition-property: background-color, color, border-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* 章节内容排版优化 */
+.prose-custom {
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+.prose-custom p {
+  margin-bottom: 1.5em;
+  text-indent: 2em;
+}
+
+.prose-custom p:first-of-type {
+  text-indent: 0;
+}
+
+/* 移动端优化 */
+@media (max-width: 640px) {
+  .prose-custom p {
+    margin-bottom: 1.2em;
+  }
+}
+
+/* 加载动画 */
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* 页面过渡动画 */
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
